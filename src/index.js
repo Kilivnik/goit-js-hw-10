@@ -26,21 +26,24 @@ function createMurkupList(country) {
 }
 
 function createMurkupInfo(country) {
-  return `<h2 class="country-info__title"><img class="country-info__flag" src="${
-    country.flags.svg
-  }" alt=${country.name.common}/>${country.name.common}</h2>
+  const {
+    flags: { svg },
+    name: { common },
+    capital,
+    population,
+    languages,
+  } = country;
+  return `<h2 class="country-info__title"><img class="country-info__flag" src="${svg}" alt=${common}/>${common}</h2>
         <ul class="country-info__list">
           <li class="country-info__item">
-            <span class="country-info__name">Capital: </span>${country.capital}
+            <span class="country-info__name">Capital: </span>${capital}
           </li>
           <li class="country-info__item">
-            <span class="country-info__name">Population: </span>${
-              country.population
-            }
+            <span class="country-info__name">Population: </span>${population}
           </li>
           <li class="country-info__item">
             <span class="country-info__name">Languages: </span>${Object.values(
-              country.languages
+              languages
             ).join(',')}
           </li>
         </ul>`;
